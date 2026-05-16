@@ -1,0 +1,9 @@
+{
+    "name": "jeromeantonio/ws03",
+    "autoload": {
+        "psr-4": {
+            "Jeromeantonio\\Ws03\\": "App/"
+        }
+    },
+    "require": {}
+}
