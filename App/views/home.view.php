@@ -1,5 +1,6 @@
 <?php require basePath('App/views/partials/head.php'); ?>
 <?php require basePath('App/views/partials/navbar.php'); ?>
+<?php require basePath('App/views/partials/showcase-search.php'); ?>
 <?php require basePath('App/views/partials/top-banner.php'); ?>
 
 <!-- Job Listings -->
@@ -40,15 +41,16 @@
                                     Local
                                 </span>
                             </li>
-
-                            <li class="mb-2">
-                                <strong>Tags:</strong>
-                                <?= $listing['tags'] ?>
-                            </li>
+                            <?php if (!empty($listing['tags'])) : ?>
+                                <li class="mb-2">
+                                    <strong>Tags:</strong>
+                                    <?= $listing['tags'] ?>
+                                </li>
+                            <?php endif; ?>
 
                         </ul>
 
-                        <a href="/listings/listing?id=<?= $listing['id'] ?>"
+                        <a href="/listings/listing/<?= $listing['id'] ?>"
                             class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
 
                             Details
@@ -62,10 +64,16 @@
 
         </div>
 
-        <a href="/listings" class="block text-xl text-center">
-            <i class="fa fa-arrow-alt-circle-right"></i>
-            Show All Jobs
-        </a>
+        <div class="text-center my-8">
+            <a
+                href="/listings"
+                class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-6 text-2xl rounded-lg focus:outline-none inline-block">
+
+                <i class="fa fa-arrow-alt-circle-right mr-2"></i>
+                Show All Jobs
+
+            </a>
+        </div>
 
     </div>
 </section>

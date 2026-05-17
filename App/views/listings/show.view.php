@@ -4,28 +4,32 @@
 
 <section class="container mx-auto p-4 mt-4">
     <div class="rounded-lg shadow-md bg-white p-3">
+        <?= loadPartial('message') ?>
         <div class="flex justify-between items-center">
 
             <a class="block p-4 text-blue-700" href="/listings">
                 <i class="fa fa-arrow-alt-circle-left"></i>
                 Back To Listings
             </a>
+            <?php if (Framework\Authorization::isOwner($listing['user_id'])) : ?>
 
-            <div class="flex space-x-4 ml-4">
-                <a href="/edit" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">
-                    Edit
-                </a>
+                <div class="flex space-x-4 ml-4">
+                    <a href="/listings/edit/<?= $listing['id'] ?>" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">
+                        Edit
+                    </a>
 
-                <!-- Delete Form -->
-                <form method="POST">
-                    <button
-                        type="submit"
-                        class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded">
-                        Delete
-                    </button>
-                </form>
-                <!-- End Delete Form -->
-            </div>
+                    <!-- Delete Form -->
+                    <form method="POST" action="/listings/delete/<?= $listing['id'] ?>">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button
+                            type="submit"
+                            class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded">
+                            Delete
+                        </button>
+                    </form>
+                    <!-- End Delete Form -->
+                </div>
+            <?php endif; ?>
 
         </div>
 
@@ -55,10 +59,13 @@
                     </span>
                 </li>
 
-                <li class="mb-2">
-                    <strong>Tags:</strong>
-                    <?= $listing['tags'] ?>
-                </li>
+                <?php if (!empty($listing['tags'])) : ?>
+                    <li class="mb-2">
+                        <strong>Tags:</strong>
+                        <?= $listing['tags'] ?>
+                    </li>
+                <?php endif; ?>
+
 
             </ul>
 

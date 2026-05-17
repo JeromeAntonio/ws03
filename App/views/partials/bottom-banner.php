@@ -1,16 +1,31 @@
-<section class="container mx-auto my-6">
+<?php
+
+use Framework\Session;
+?>
+
+<section class="container mx-auto px-4 my-16">
+
     <div
-        class="bg-blue-800 text-white rounded p-4 flex items-center justify-between">
-        <div>
-            <h2 class="text-xl font-semibold">Looking to hire?</h2>
-            <p class="text-gray-200 text-lg mt-2">
-                Post your job listing now and find the perfect candidate.
-            </p>
+        class="bg-gradient-to-r from-blue-900 to-blue-700 text-white rounded-lg p-10 shadow-md">
+
+        <div
+            class="flex flex-col md:flex-row justify-between items-center gap-8">
+
+            <div class="max-w-2xl">
+
+                <h2 class="text-4xl font-bold mb-4 text-white">
+                    Looking to Hire Top Talent?
+                </h2>
+
+                <p class="text-lg text-black">
+                    Post your job openings and connect with skilled
+                    professionals ready to join your company.
+                </p>
+
+            </div>
+
         </div>
-        <a
-            href="post-job.html"
-            class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded hover:shadow-md transition duration-300">
-            <i class="fa fa-edit"></i> Post a Job
-        </a>
+
     </div>
+
 </section>

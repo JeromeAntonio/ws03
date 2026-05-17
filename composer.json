@@ -1,8 +1,16 @@
 {
     "name": "jeromeantonio/ws03",
+    "description": "Job seeker application",
+    "authors": [
+        {
+            "name": "Jerome Antonio",
+            "email": "antonio.jerome.main@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
-            "Jeromeantonio\\Ws03\\": "App/"
+            "Framework\\": "Framework/",
+            "App\\": "App/"
         }
     },
     "require": {}

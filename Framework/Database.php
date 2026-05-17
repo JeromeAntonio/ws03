@@ -1,19 +1,45 @@
 <?php
 
-$host = '127.0.0.1';
-$port = '3306';
-$dbname = 'jobseek';
-$username = 'root';
-$password = '';
+namespace Framework;
 
-try {
-    $conn = new PDO(
-        "mysql:host=$host;port=$port;dbname=$dbname",
-        $username,
-        $password
-    );
+class Database
+{
+    public $conn;
 
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('Connection failed: ' . $e->getMessage());
+    public function __construct($config)
+    {
+        $dsn = 'mysql:host=' . $config['host'] .
+            ';port=' . $config['port'] .
+            ';dbname=' . $config['dbname'];
+
+        try {
+
+            $this->conn = new \PDO(
+                $dsn,
+                $config['username'],
+                $config['password']
+            );
+
+            $this->conn->setAttribute(
+                \PDO::ATTR_ERRMODE,
+                \PDO::ERRMODE_EXCEPTION
+            );
+        } catch (\PDOException $e) {
+
+            die('Connection failed: ' . $e->getMessage());
+        }
+    }
+
+    public function query($query, $params = [])
+    {
+        $stmt = $this->conn->prepare($query);
+
+        foreach ($params as $param => $value) {
+            $stmt->bindValue($param, $value);
+        }
+
+        $stmt->execute();
+
+        return $stmt;
+    }
 }
