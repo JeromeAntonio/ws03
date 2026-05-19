@@ -2,117 +2,211 @@
 <?php require basePath('App/views/partials/navbar.php'); ?>
 <?php require basePath('App/views/partials/top-banner.php'); ?>
 
-<section class="container mx-auto p-4 mt-4">
-    <div class="rounded-lg shadow-md bg-white p-3">
-        <?= loadPartial('message') ?>
-        <div class="flex justify-between items-center">
+<section class="job-details-hero">
 
-            <a class="block p-4 text-blue-700" href="/listings">
-                <i class="fa fa-arrow-alt-circle-left"></i>
-                Back To Listings
-            </a>
-            <?php if (Framework\Authorization::isOwner($listing['user_id'])) : ?>
+    <div class="job-details-container">
 
-                <div class="flex space-x-4 ml-4">
-                    <a href="/listings/edit/<?= $listing['id'] ?>" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">
-                        Edit
-                    </a>
+        <!-- TOP CARD -->
 
-                    <!-- Delete Form -->
-                    <form method="POST" action="/listings/delete/<?= $listing['id'] ?>">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button
-                            type="submit"
-                            class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded">
-                            Delete
-                        </button>
-                    </form>
-                    <!-- End Delete Form -->
-                </div>
-            <?php endif; ?>
+        <div class="job-details-card">
 
-        </div>
+            <?= loadPartial('message') ?>
 
-        <div class="p-4">
+            <!-- TOP ACTIONS -->
 
-            <h2 class="text-xl font-semibold">
-                <?= $listing['title'] ?>
-            </h2>
+            <div class="job-details-top">
 
-            <p class="text-gray-700 text-lg mt-2">
-                <?= $listing['description'] ?>
-            </p>
+                <a class="back-btn" href="/listings">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back To Listings
+                </a>
 
-            <ul class="my-4 bg-gray-100 p-4">
+                <?php if (Framework\Authorization::isOwner($listing['user_id'])) : ?>
 
-                <li class="mb-2">
-                    <strong>Salary:</strong>
-                    <?= formatSalary($listing['salary']) ?>
-                </li>
+                    <div class="job-action-buttons">
 
-                <li class="mb-2">
-                    <strong>Location:</strong>
-                    <?= $listing['city'] ?>, <?= $listing['state'] ?>
+                        <a
+                            href="/listings/edit/<?= $listing['id'] ?>"
+                            class="edit-job-btn">
 
-                    <span class="text-xs bg-blue-500 text-white rounded-full px-2 py-1 ml-2">
-                        Local
-                    </span>
-                </li>
+                            <i class="fa-solid fa-pen"></i>
+                            Edit
 
-                <?php if (!empty($listing['tags'])) : ?>
-                    <li class="mb-2">
-                        <strong>Tags:</strong>
-                        <?= $listing['tags'] ?>
-                    </li>
+                        </a>
+
+                        <form
+                            method="POST"
+                            action="/listings/delete/<?= $listing['id'] ?>">
+
+                            <input
+                                type="hidden"
+                                name="_method"
+                                value="DELETE">
+
+                            <button
+                                type="submit"
+                                class="delete-job-btn">
+
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
                 <?php endif; ?>
 
+            </div>
 
-            </ul>
+            <!-- JOB CONTENT -->
+
+            <div class="job-details-content">
+
+                <div class="job-title-badge">
+                    Featured Opportunity
+                </div>
+
+                <h1>
+                    <?= $listing['title'] ?>
+                </h1>
+
+                <p class="job-main-description">
+                    <?= $listing['description'] ?>
+                </p>
+
+                <!-- INFO GRID -->
+
+                <div class="job-info-grid">
+
+                    <!-- SALARY -->
+
+                    <div class="job-info-item">
+
+                        <div class="job-info-icon salary-icon">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+
+                        <div>
+                            <span>Salary</span>
+
+                            <h3>
+                                <?= formatSalary($listing['salary']) ?>
+                            </h3>
+                        </div>
+
+                    </div>
+
+                    <!-- LOCATION -->
+
+                    <div class="job-info-item">
+
+                        <div class="job-info-icon location-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+
+                        <div>
+                            <span>Location</span>
+
+                            <h3>
+                                <?= $listing['city'] ?>,
+                                <?= $listing['state'] ?>
+                            </h3>
+                        </div>
+
+                    </div>
+
+                    <!-- TAGS -->
+
+                    <?php if (!empty($listing['tags'])) : ?>
+
+                        <div class="job-info-item full-width">
+
+                            <div class="job-info-icon tag-icon">
+                                <i class="fa-solid fa-tags"></i>
+                            </div>
+
+                            <div>
+                                <span>Technologies</span>
+
+                                <h3>
+                                    <?= $listing['tags'] ?>
+                                </h3>
+                            </div>
+
+                        </div>
+
+                    <?php endif; ?>
+
+                </div>
+
+            </div>
 
         </div>
+
+        <!-- DETAILS SECTION -->
+
+        <div class="details-grid">
+
+            <!-- REQUIREMENTS -->
+
+            <div class="details-box">
+
+                <h2>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Requirements
+                </h2>
+
+                <p>
+                    <?= $listing['requirements'] ?>
+                </p>
+
+            </div>
+
+            <!-- BENEFITS -->
+
+            <div class="details-box">
+
+                <h2>
+                    <i class="fa-solid fa-gift"></i>
+                    Benefits
+                </h2>
+
+                <p>
+                    <?= $listing['benefits'] ?>
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- APPLY BOX -->
+
+        <div class="apply-box">
+
+            <h2>
+                Ready to Apply?
+            </h2>
+
+            <p>
+                Put "Job Application" as the subject of your email and attach your resume.
+            </p>
+
+            <a
+                href="mailto:<?= $listing['email'] ?>"
+                class="apply-btn">
+
+                <i class="fa-solid fa-paper-plane"></i>
+                Apply Now
+
+            </a>
+
+        </div>
+
     </div>
+
 </section>
 
-<section class="container mx-auto p-4">
 
-    <h2 class="text-xl font-semibold mb-4">
-        Job Details
-    </h2>
-
-    <div class="rounded-lg shadow-md bg-white p-4">
-
-        <h3 class="text-lg font-semibold mb-2 text-blue-500">
-            Job Requirements
-        </h3>
-
-        <p>
-            <?= $listing['requirements'] ?>
-        </p>
-
-        <h3 class="text-lg font-semibold mt-4 mb-2 text-blue-500">
-            Benefits
-        </h3>
-
-        <p>
-            <?= $listing['benefits'] ?>
-        </p>
-
-    </div>
-
-    <p class="my-5">
-        Put "Job Application" as the subject of your email and attach your
-        resume.
-    </p>
-
-    <a
-        href="mailto:<?= $listing['email'] ?>"
-        class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium cursor-pointer text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
-
-        Apply Now
-
-    </a>
-
-</section>
-
-<?php require basePath('App/views/partials/bottom-banner.php'); ?>
 <?php require basePath('App/views/partials/footer.php'); ?>

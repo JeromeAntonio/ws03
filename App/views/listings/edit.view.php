@@ -1,117 +1,275 @@
 <?php require basePath('App/views/partials/head.php'); ?>
 <?php require basePath('App/views/partials/navbar.php'); ?>
 
+<section class="create-job-section">
 
-<section class="flex justify-center items-center mt-20">
-    <div class="bg-white p-8 rounded-lg shadow-md w-full md:w-600 mx-6">
-        <h2 class="text-4xl text-center font-bold mb-4">Edit Job Listing</h2>
+    <div class="create-job-container">
 
-        <form method="POST" action="/listings/<?= $listing['id'] ?>">
-            <input type="hidden" name="_method" value="PUT">
-            <h2 class="text-2xl font-bold mb-6 text-center text-gray-500">
-                Job Info
-            </h2>
+        <!-- HEADER -->
+
+        <div class="create-job-header">
+
+            <div class="create-job-badge">
+                <i class="fa-solid fa-pen-to-square"></i>
+                Update Your Listing
+            </div>
+
+            <h1>Edit Job Listing</h1>
+
+            <p>
+                Update your job posting and keep your opportunity fresh for applicants.
+            </p>
+
+        </div>
+
+        <!-- FORM CARD -->
+
+        <div class="create-job-card">
+
             <?= loadPartial('errors', ['errors' => $errors ?? []]) ?>
-            <div class="mb-4">
-                <input
-                    type="text"
-                    name="title"
-                    placeholder="Job Title"
-                    class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= $listing['title'] ?? '' ?>" />
-            </div>
-            <div class="mb-4">
-                <textarea
-                    name="description"
-                    placeholder="Job Description"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"><?= $listing['description'] ?? '' ?></textarea>
-            </div>
-            <div class="mb-4">
-                <input
-                    type="text"
-                    name="salary"
-                    placeholder="Annual Salary"
-                    class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= $listing['salary'] ?? '' ?>" />
-            </div>
 
-            <div class="mb-4">
-                <input
-                    type="text"
-                    name="tags"
-                    placeholder="Tags (ex. PHP, Laravel, MySQL)"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    value="<?= $listing['tags'] ?? '' ?>" />
-            </div>
-            <div class="mb-4">
-                <input
-                    type="text"
-                    name="requirements"
-                    placeholder="Requirements"
-                    class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= $listing['requirements'] ?? '' ?>" />
-            </div>
-            <div class="mb-4">
-                <input
-                    type="text"
-                    name="benefits"
-                    placeholder="Benefits"
-                    class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= $listing['benefits'] ?? '' ?>" />
-            </div>
-            <h2 class="text-2xl font-bold mb-6 text-center text-gray-500">
-                Company Info & Location
-            </h2>
-            <div class="mb-4">
-                <input
-                    type="text"
-                    name="company"
-                    placeholder="Company Name"
-                    class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= $listing['company'] ?? '' ?>" />
-            </div>
-            <div class="mb-4">
-                <input
-                    type="text"
-                    name="address"
-                    placeholder="Address"
-                    class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= $listing['address'] ?? '' ?>" />
-            </div>
-            <div class="mb-4">
-                <input
-                    type="text"
-                    name="city"
-                    placeholder="City"
-                    class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= $listing['city'] ?? '' ?>" />
-            </div>
-            <div class="mb-4">
-                <input
-                    type="text"
-                    name="state"
-                    placeholder="State"
-                    class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= $listing['state'] ?? '' ?>" />
-            </div>
-            <div class="mb-4">
-                <input
-                    type="text"
-                    name="phone"
-                    placeholder="Phone"
-                    class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= $listing['phone'] ?? '' ?>" />
-            </div>
-            <div class="mb-4">
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address For Applications"
-                    class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= $listing['email'] ?? '' ?>" />
-            </div>
+            <form
+                method="POST"
+                action="/listings/<?= $listing['id'] ?>">
 
-            <button
-                class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 my-3 rounded focus:outline-none">
-                Save
-            </button>
-            <a
-                href="/listings/listing/<?= $listing['id'] ?>"
-                class="block text-center w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded focus:outline-none">
-                Cancel
-            </a>
-        </form>
+                <input
+                    type="hidden"
+                    name="_method"
+                    value="PUT">
+
+                <!-- JOB INFO -->
+
+                <div class="form-section">
+
+                    <h2 class="form-section-title">
+
+                        <i class="fa-solid fa-briefcase"></i>
+
+                        Job Information
+
+                    </h2>
+
+                    <div class="form-grid">
+
+                        <!-- TITLE -->
+
+                        <div class="form-group full-width">
+
+                            <label>Job Title</label>
+
+                            <input
+                                type="text"
+                                name="title"
+                                placeholder="Enter job title"
+                                value="<?= $listing['title'] ?? '' ?>" />
+
+                        </div>
+
+                        <!-- DESCRIPTION -->
+
+                        <div class="form-group full-width">
+
+                            <label>Job Description</label>
+
+                            <textarea
+                                name="description"
+                                rows="5"
+                                placeholder="Describe the role and responsibilities"><?= $listing['description'] ?? '' ?></textarea>
+
+                        </div>
+
+                        <!-- SALARY -->
+
+                        <div class="form-group">
+
+                            <label>Annual Salary</label>
+
+                            <input
+                                type="text"
+                                name="salary"
+                                placeholder="$85,000"
+                                value="<?= $listing['salary'] ?? '' ?>" />
+
+                        </div>
+
+                        <!-- TAGS -->
+
+                        <div class="form-group">
+
+                            <label>Tags / Technologies</label>
+
+                            <input
+                                type="text"
+                                name="tags"
+                                placeholder="PHP, Laravel, MySQL"
+                                value="<?= $listing['tags'] ?? '' ?>" />
+
+                        </div>
+
+                        <!-- REQUIREMENTS -->
+
+                        <div class="form-group full-width">
+
+                            <label>Requirements</label>
+
+                            <input
+                                type="text"
+                                name="requirements"
+                                placeholder="Required skills and experience"
+                                value="<?= $listing['requirements'] ?? '' ?>" />
+
+                        </div>
+
+                        <!-- BENEFITS -->
+
+                        <div class="form-group full-width">
+
+                            <label>Benefits</label>
+
+                            <input
+                                type="text"
+                                name="benefits"
+                                placeholder="Health insurance, bonuses, remote work"
+                                value="<?= $listing['benefits'] ?? '' ?>" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- COMPANY INFO -->
+
+                <div class="form-section">
+
+                    <h2 class="form-section-title">
+
+                        <i class="fa-solid fa-building"></i>
+
+                        Company Information
+
+                    </h2>
+
+                    <div class="form-grid">
+
+                        <!-- COMPANY -->
+
+                        <div class="form-group full-width">
+
+                            <label>Company Name</label>
+
+                            <input
+                                type="text"
+                                name="company"
+                                placeholder="Company name"
+                                value="<?= $listing['company'] ?? '' ?>" />
+
+                        </div>
+
+                        <!-- ADDRESS -->
+
+                        <div class="form-group full-width">
+
+                            <label>Address</label>
+
+                            <input
+                                type="text"
+                                name="address"
+                                placeholder="Street address"
+                                value="<?= $listing['address'] ?? '' ?>" />
+
+                        </div>
+
+                        <!-- CITY -->
+
+                        <div class="form-group">
+
+                            <label>City</label>
+
+                            <input
+                                type="text"
+                                name="city"
+                                placeholder="City"
+                                value="<?= $listing['city'] ?? '' ?>" />
+
+                        </div>
+
+                        <!-- STATE -->
+
+                        <div class="form-group">
+
+                            <label>State</label>
+
+                            <input
+                                type="text"
+                                name="state"
+                                placeholder="State"
+                                value="<?= $listing['state'] ?? '' ?>" />
+
+                        </div>
+
+                        <!-- PHONE -->
+
+                        <div class="form-group">
+
+                            <label>Phone</label>
+
+                            <input
+                                type="text"
+                                name="phone"
+                                placeholder="Phone number"
+                                value="<?= $listing['phone'] ?? '' ?>" />
+
+                        </div>
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+                            <label>Application Email</label>
+
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email address"
+                                value="<?= $listing['email'] ?? '' ?>" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ACTIONS -->
+
+                <div class="create-job-actions">
+
+                    <button class="save-job-btn">
+
+                        <i class="fa-solid fa-floppy-disk"></i>
+
+                        Update Listing
+
+                    </button>
+
+                    <a
+                        href="/listings/listing/<?= $listing['id'] ?>"
+                        class="cancel-job-btn">
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                        Cancel
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
     </div>
+
 </section>
 
-<?php require basePath('App/views/partials/bottom-banner.php'); ?>
+<?php require basePath('App/views/partials/footer.php'); ?>

@@ -34,3 +34,5 @@
         </form>
     </div>
 </div>
+
+<?php require basePath('App/views/partials/footer.php'); ?>

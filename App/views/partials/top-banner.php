@@ -1,53 +1,58 @@
-<section class="bg-white py-16 border-b border-gray-200">
+<section class="top-banner-section">
 
-    ```
     <div class="container mx-auto px-4">
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="top-banner-grid">
 
-            <div class="bg-gray-100 p-8 rounded-lg shadow-sm">
+            <!-- CARD 1 -->
 
-                <div class="text-4xl text-blue-500 mb-4">
-                    <i class="fa fa-briefcase"></i>
+            <div class="top-banner-card">
+
+                <div class="top-banner-icon">
+                    <i class="fa-solid fa-briefcase"></i>
                 </div>
 
-                <h3 class="text-xl font-bold mb-2">
+                <h3>
                     Thousands of Jobs
                 </h3>
 
-                <p class="text-gray-600">
+                <p>
                     Browse opportunities from trusted companies worldwide.
                 </p>
 
             </div>
 
-            <div class="bg-gray-100 p-8 rounded-lg shadow-sm">
+            <!-- CARD 2 -->
 
-                <div class="text-4xl text-blue-500 mb-4">
-                    <i class="fa fa-users"></i>
+            <div class="top-banner-card">
+
+                <div class="top-banner-icon">
+                    <i class="fa-solid fa-users"></i>
                 </div>
 
-                <h3 class="text-xl font-bold mb-2">
+                <h3>
                     Top Employers
                 </h3>
 
-                <p class="text-gray-600">
+                <p>
                     Connect with employers looking for talented professionals.
                 </p>
 
             </div>
 
-            <div class="bg-gray-100 p-8 rounded-lg shadow-sm">
+            <!-- CARD 3 -->
 
-                <div class="text-4xl text-blue-500 mb-4">
-                    <i class="fa fa-chart-line"></i>
+            <div class="top-banner-card">
+
+                <div class="top-banner-icon">
+                    <i class="fa-solid fa-chart-line"></i>
                 </div>
 
-                <h3 class="text-xl font-bold mb-2">
+                <h3>
                     Career Growth
                 </h3>
 
-                <p class="text-gray-600">
+                <p>
                     Take the next step toward achieving your dream career.
                 </p>
 
@@ -56,6 +61,5 @@
         </div>
 
     </div>
-    ```
 
 </section>

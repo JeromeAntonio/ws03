@@ -17,35 +17,84 @@
                 <div class="rounded-lg shadow-md bg-white">
                     <div class="p-4">
 
-                        <h2 class="text-xl font-semibold">
+                        <h2 class="text-2xl font-black flex items-center gap-3 job-title">
+
+                            <span class="job-icon">
+
+                                <?php if (str_contains(strtolower($listing['title']), 'system')) : ?>
+                                    <i class="fa-solid fa-server"></i>
+
+                                <?php elseif (str_contains(strtolower($listing['title']), 'database')) : ?>
+                                    <i class="fa-solid fa-database"></i>
+
+                                <?php elseif (str_contains(strtolower($listing['title']), 'network')) : ?>
+                                    <i class="fa-solid fa-network-wired"></i>
+
+                                <?php elseif (str_contains(strtolower($listing['title']), 'support')) : ?>
+                                    <i class="fa-solid fa-headset"></i>
+
+                                <?php else : ?>
+                                    <i class="fa-solid fa-laptop-code"></i>
+                                <?php endif; ?>
+
+                            </span>
+
                             <?= $listing['title'] ?>
+
                         </h2>
 
                         <p class="text-gray-700 text-lg mt-2">
                             <?= $listing['description'] ?>
                         </p>
 
-                        <ul class="my-4 bg-gray-100 p-4 rounded">
+                        <ul class="my-4 bg-gray-100 p-5 rounded-xl job-info-box">
 
-                            <li class="mb-2">
-                                <strong>Salary:</strong>
-                                <?= formatSalary($listing['salary']) ?>
-                            </li>
+                            <li class="mb-3 flex items-center gap-2">
 
-                            <li class="mb-2">
-                                <strong>Location:</strong>
-                                <?= $listing['city'] ?>,
-                                <?= $listing['state'] ?>
-
-                                <span class="text-xs bg-blue-500 text-white rounded-full px-2 py-1 ml-2">
-                                    Local
+                                <span class="job-mini-icon salary-icon">
+                                    <i class="fa-solid fa-money-bill-wave"></i>
                                 </span>
+
+                                <div>
+                                    <strong>Salary:</strong>
+                                    <?= formatSalary($listing['salary']) ?>
+                                </div>
+
                             </li>
+
+                            <li class="mb-3 flex items-center gap-2">
+
+                                <span class="job-mini-icon location-icon">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </span>
+
+                                <div>
+                                    <strong>Location:</strong>
+                                    <?= $listing['city'] ?>,
+                                    <?= $listing['state'] ?>
+
+                                    <span class="text-xs bg-blue-500 text-white rounded-full px-2 py-1 ml-2">
+                                        Local
+                                    </span>
+                                </div>
+
+                            </li>
+
                             <?php if (!empty($listing['tags'])) : ?>
-                                <li class="mb-2">
-                                    <strong>Tags:</strong>
-                                    <?= $listing['tags'] ?>
+
+                                <li class="mb-2 flex items-start gap-2">
+
+                                    <span class="job-mini-icon tag-icon">
+                                        <i class="fa-solid fa-tags"></i>
+                                    </span>
+
+                                    <div>
+                                        <strong>Tags:</strong>
+                                        <?= $listing['tags'] ?>
+                                    </div>
+
                                 </li>
+
                             <?php endif; ?>
 
                         </ul>

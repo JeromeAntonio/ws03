@@ -1,52 +1,64 @@
-<section
-    class="showcase relative bg-cover bg-center bg-no-repeat flex items-center justify-center">
+<section class="showcase">
 
-    ```
-    <div class="overlay"></div>
 
-    <div class="container mx-auto text-center z-10 px-4">
+    <div class="container mx-auto showcase-content">
 
-        <div class="max-w-3xl mx-auto">
+        <div class="showcase-badge">
 
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                Find Your Dream Career Today
-            </h1>
+            <i class="fa-solid fa-sparkles"></i>
 
-            <p class="text-lg text-gray-200 mb-10">
-                Explore thousands of opportunities from top companies and
-                start building your future with Jobseek.
-            </p>
+            #1 Modern Job Platform
 
-            <form
-                method="GET"
-                action="/listings/search"
-                class="bg-white p-4 rounded-lg shadow-md flex flex-col md:flex-row gap-4 max-w-4xl mx-auto">
+        </div>
+
+        <h1>
+            Find Your Dream Career Today
+        </h1>
+
+        <p>
+            Explore thousands of opportunities from top companies
+            and start building your future with Jobseek.
+        </p>
+
+        <!-- SEARCH -->
+
+        <form
+            method="GET"
+            action="/listings/search"
+            class="showcase-search-box">
+
+            <div class="search-input-group">
+
+                <i class="fa-solid fa-briefcase"></i>
 
                 <input
                     type="text"
                     name="keywords"
-                    placeholder="Job title or keywords"
-                    class="flex-1 px-4 py-3 border rounded focus:outline-none">
+                    placeholder="Job title or keywords">
+
+            </div>
+
+            <div class="search-input-group">
+
+                <i class="fa-solid fa-location-dot"></i>
 
                 <input
                     type="text"
                     name="location"
-                    placeholder="Location"
-                    class="flex-1 px-4 py-3 border rounded focus:outline-none">
+                    placeholder="Location">
 
-                <button
-                    class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded font-semibold">
+            </div>
 
-                    <i class="fa fa-search mr-2"></i>
-                    Search Jobs
+            <button type="submit">
 
-                </button>
+                <i class="fa-solid fa-magnifying-glass"></i>
 
-            </form>
+                Search Jobs
 
-        </div>
+            </button>
+
+        </form>
 
     </div>
-    ```
 
 </section>

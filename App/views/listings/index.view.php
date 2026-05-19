@@ -24,8 +24,30 @@
                 <div class="rounded-lg shadow-md bg-white">
                     <div class="p-4">
 
-                        <h2 class="text-xl font-semibold">
+                        <h2 class="text-2xl font-black flex items-center gap-3 job-title">
+
+                            <span class="job-icon">
+
+                                <?php if (str_contains(strtolower($listing['title']), 'system')) : ?>
+                                    <i class="fa-solid fa-server"></i>
+
+                                <?php elseif (str_contains(strtolower($listing['title']), 'database')) : ?>
+                                    <i class="fa-solid fa-database"></i>
+
+                                <?php elseif (str_contains(strtolower($listing['title']), 'network')) : ?>
+                                    <i class="fa-solid fa-network-wired"></i>
+
+                                <?php elseif (str_contains(strtolower($listing['title']), 'support')) : ?>
+                                    <i class="fa-solid fa-headset"></i>
+
+                                <?php else : ?>
+                                    <i class="fa-solid fa-laptop-code"></i>
+                                <?php endif; ?>
+
+                            </span>
+
                             <?= $listing['title'] ?>
+
                         </h2>
 
                         <p class="text-gray-700 text-lg mt-2">
